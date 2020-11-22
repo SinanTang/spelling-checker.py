@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+regex = "==2020.11.13"
+
+[dev-packages]
+pylint = "*"
+
+[requires]
+python_version = "3.8.5"
+
+[scripts]
+tests = "python -m unittest discover tests"
+lint = "pylint src"
