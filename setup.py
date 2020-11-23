@@ -8,7 +8,7 @@ with open(os.path.join(os.path.dirname(__file__), "README.md")) as readme:
     LONG_DESCRIPTION = readme.read()
 
 setup(
-    name="spellcheck",
+    name="spellingchecker",
     version=__version__,
     author="stang",
     author_email="",
