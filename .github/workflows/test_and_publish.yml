@@ -19,11 +19,6 @@ jobs:
         with:
           python-version: "${{ steps.pyversion.outputs.PYTHONVERSION }}"
 
-#      - name: Set up Python path
-#        run: echo "::set-env name=PYTHONPATH::${{ github.workspace }}"
-#        env:
-#          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -45,13 +40,3 @@ jobs:
           user: __token__
           password: ${{ secrets.test_pypi_password }}
           verbose: true
-
-#      - name: Build and Publish to Gemfury
-#        if: github.ref == 'refs/heads/main'
-#        run: |
-#          python setup.py sdist bdist_wheel
-#          cd dist && PACKAGE="$(find . -name '*.gz')"
-#          curl -F package=@$PACKAGE https://$GEMFURY_TOKEN@push.fury.io/babbel/
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GEMFURY_TOKEN }}
-#          GEMFURY_TOKEN: ${{ secrets.GEMFURY_TOKEN }}
