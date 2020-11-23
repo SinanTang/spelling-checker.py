@@ -1,0 +1,52 @@
+name: test and publish
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Environment setup
+      - uses: actions/checkout@v2
+
+      - name: Read .python-version
+        run: echo ::set-output name=PYTHONVERSION::$(cat .python-version)
+        id: pyversion
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: "${{ steps.pyversion.outputs.PYTHONVERSION }}"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel
+          pip install pipenv
+          pipenv sync --dev
+          pipenv clean
+
+      - name: Run tests
+        run: pipenv run tests
+
+      - name: Build a binary wheel and a source tarball
+        run: python setup.py sdist bdist_wheel
+
+      - name: Publish distribution to Test PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        if: github.ref == 'refs/heads/main'
+        with:
+          user: __token__
+          password: ${{ secrets.test_pypi_password }}
+          verbose: true
+
+#      - name: Build and Publish to Gemfury
+#        if: github.ref == 'refs/heads/main'
+#        run: |
+#          python setup.py sdist bdist_wheel
+#          cd dist && PACKAGE="$(find . -name '*.gz')"
+#          curl -F package=@$PACKAGE https://$GEMFURY_TOKEN@push.fury.io/babbel/
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GEMFURY_TOKEN }}
+#          GEMFURY_TOKEN: ${{ secrets.GEMFURY_TOKEN }}
