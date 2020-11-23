@@ -10,14 +10,14 @@ jobs:
       # Environment setup
       - uses: actions/checkout@v2
 
-      - name: Read .python-version
-        run: echo ::set-output name=PYTHONVERSION::$(cat .python-version)
-        id: pyversion
+#      - name: Read .python-version
+#        run: echo ::set-output name=PYTHONVERSION::$(cat .python-version)
+#        id: pyversion
 
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
-          python-version: "${{ steps.pyversion.outputs.PYTHONVERSION }}"
+          python-version: 3.8.5
 
       - name: Set up Python path
         run: echo "::set-env name=PYTHONPATH::${{ github.workspace }}"
