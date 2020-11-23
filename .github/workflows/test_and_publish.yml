@@ -35,6 +35,7 @@ jobs:
 
       - name: Publish distribution to Test PyPI
         uses: pypa/gh-action-pypi-publish@master
+        if: github.ref == 'refs/heads/main'
         with:
           user: __token__
           password: ${{ secrets.test_pypi_password }}
