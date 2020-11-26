@@ -1,3 +1,4 @@
 include LICENSE
 recursive-include utils *
 recursive-include tests *
+recursive-include src/spellingchecker/data *
