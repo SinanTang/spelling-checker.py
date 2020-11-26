@@ -21,10 +21,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -39,9 +35,6 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
 # Environments
 .env
 .venv
@@ -52,3 +45,4 @@ env.bak/
 venv.bak/
 
 .idea/
+.DS_Store

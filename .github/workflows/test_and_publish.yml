@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Environment setup
-      - uses: actions/checkout@v2
+      - name: Environment setup
+        uses: actions/checkout@v2
 
       - name: Read .python-version
         run: echo ::set-output name=PYTHONVERSION::$(cat .python-version)
