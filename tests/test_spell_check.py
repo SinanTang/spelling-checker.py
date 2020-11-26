@@ -1,7 +1,7 @@
 import unittest
 
-from src.spelling_checker import SpellChecker
-from src.spelling_checker.errors import UnsupportedLanguageError
+from src.spellingchecker import SpellChecker
+from src.spellingchecker.errors import UnsupportedLanguageError
 
 
 class TestSpellCheck(unittest.TestCase):

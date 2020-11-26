@@ -1,6 +1,6 @@
 import unittest
 
-from src.spelling_checker.helpers import get_words, get_known_words
+from src.spellingchecker.helpers import get_words, get_known_words
 
 
 class TestHelpers(unittest.TestCase):
