@@ -3,8 +3,14 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
+[[source]]
+name = "test"
+url = "https://test.pypi.org/simple"
+verify_ssl = true
+
 [packages]
 regex = "==2020.11.13"
+spellingchecker = { version = "==0.0.4", index = "test" }
 
 [dev-packages]
 pylint = "*"
